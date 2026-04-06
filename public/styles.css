@@ -1,0 +1,195 @@
+:root {
+  color-scheme: light;
+  --bg: #111827;
+  --panel: #1f2937;
+  --panel-soft: #243244;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #f59e0b;
+  --light: #f0d9b5;
+  --dark: #b58863;
+  --highlight: rgba(245, 158, 11, 0.35);
+  --ring: rgba(96, 165, 250, 0.95);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.15), transparent 30%),
+    linear-gradient(180deg, #0f172a, #111827 50%, #0b1120);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app-shell {
+  width: min(1000px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(31, 41, 55, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.lede {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  max-width: 40rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  color: #111827;
+  font-weight: 800;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.25);
+}
+
+.button:hover {
+  filter: brightness(1.05);
+}
+
+.status {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.7rem 0.95rem;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.board-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  width: min(92vw, 88vh, 760px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+}
+
+.square {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  font-size: clamp(1.65rem, 5vw, 3.25rem);
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.square:hover {
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+.square.light {
+  background: var(--light);
+  color: #111827;
+}
+
+.square.dark {
+  background: var(--dark);
+  color: #111827;
+}
+
+.square.selected {
+  box-shadow: inset 0 0 0 4px var(--ring);
+}
+
+.square.legal::after {
+  content: '';
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  border-radius: 999px;
+  background: var(--highlight);
+}
+
+.square.capture::after {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  border: 4px solid rgba(245, 158, 11, 0.8);
+  background: transparent;
+}
+
+.square-label {
+  position: absolute;
+  left: 0.35rem;
+  bottom: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  opacity: 0.55;
+  color: inherit;
+}
+
+@media (max-width: 720px) {
+  .panel {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .status {
+    width: 100%;
+    justify-content: center;
+  }
+}

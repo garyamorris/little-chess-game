@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Little Chess</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel">
+        <div>
+          <p class="eyebrow">Tiny browser chess</p>
+          <h1>Little Chess</h1>
+          <p class="lede">Click a piece, then click a highlighted square to move it.</p>
+        </div>
+        <div class="toolbar">
+          <button id="resetButton" class="button">Reset game</button>
+          <div id="status" class="status" aria-live="polite">Loading…</div>
+        </div>
+      </section>
+
+      <section class="board-wrap" aria-label="Chess board">
+        <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
